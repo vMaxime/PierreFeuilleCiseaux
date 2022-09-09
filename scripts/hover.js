@@ -1,43 +1,26 @@
 // change images on hover
 
-const rockElement = document.getElementById('rock');
+let elementNames = ['rock', 'paper', 'scissors'];
 
-rockElement.addEventListener('mouseenter', () => {
-    let img = rockElement.querySelector('img');
-    if (img !== undefined)
-        img.src = 'images/rock-hover.png';
-});
+for (let name of elementNames) {
+    let element = document.getElementById(name);
+    if (element === null || element === undefined)
+        continue;
 
-rockElement.addEventListener('mouseleave', () => {
-    let img = rockElement.querySelector('img');
-    if (img !== undefined)
-        img.src = 'images/rock.png';
-});
+    element.addEventListener('mouseenter', () => {
+        let img = element.querySelector('img');
+        if (img !== undefined)
+            img.src = 'images/' + name + '-hover.png';
+            new Audio('sounds/select-menu.mp3').play();
+    });
 
-const paperElement = document.getElementById('paper');
+    element.addEventListener('mouseleave', () => {
+        let img = element.querySelector('img');
+        if (img !== undefined)
+            img.src = 'images/' + name + '.png';
+    });
 
-paperElement.addEventListener('mouseenter', () => {
-    let img = paperElement.querySelector('img');
-    if (img !== undefined)
-        img.src = 'images/paper-hover.png';
-});
-
-paperElement.addEventListener('mouseleave', () => {
-    let img = paperElement.querySelector('img');
-    if (img !== undefined)
-        img.src = 'images/paper.png';
-});
-
-const scissorsElement = document.getElementById('scissors');
-
-scissorsElement.addEventListener('mouseenter', () => {
-    let img = scissorsElement.querySelector('img');
-    if (img !== undefined)
-        img.src = 'images/scissors-hover.png';
-});
-
-scissorsElement.addEventListener('mouseleave', () => {
-    let img = scissorsElement.querySelector('img');
-    if (img !== undefined)
-        img.src = 'images/scissors.png';
-});
+    element.addEventListener('click', () => {
+        new Audio('sounds/click.mp3').play();
+    });
+}

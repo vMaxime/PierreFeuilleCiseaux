@@ -145,3 +145,11 @@ svg {
     height: 140px;
     margin-top: 80px;
 }
+
+.question-mark {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}

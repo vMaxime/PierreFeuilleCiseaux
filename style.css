@@ -139,4 +139,12 @@ svg {
   margin-top: 80px;
 }
 
+.question-mark {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
 /*# sourceMappingURL=style.css.map */
