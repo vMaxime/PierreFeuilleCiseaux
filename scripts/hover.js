@@ -7,20 +7,31 @@ for (let name of elementNames) {
     if (element === null || element === undefined)
         continue;
 
+    let img = element.querySelector('img');
+    let label = element.querySelector('label');
+
     element.addEventListener('mouseenter', () => {
-        let img = element.querySelector('img');
-        if (img !== undefined)
+        if (canSelect) {
             img.src = 'images/' + name + '-hover.png';
-            new Audio('sounds/select-menu.mp3').play();
-    });
+            label.style.color = 'rgb(170, 170, 170)';
+        }
+    } );
 
     element.addEventListener('mouseleave', () => {
-        let img = element.querySelector('img');
-        if (img !== undefined)
+        if (canSelect) {
             img.src = 'images/' + name + '.png';
+            label.style.color = '#FFF';
+        }
     });
 
     element.addEventListener('click', () => {
-        new Audio('sounds/click.mp3').play();
+        let selected = onSelect(name, () => {
+            img.src = 'images/' + name + '.png';
+            label.style.color = '#FFF';
+        });
+
+        if (selected) {
+            new Audio('sounds/click.mp3').play();
+        }
     });
 }
